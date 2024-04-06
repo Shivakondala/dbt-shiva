@@ -4,6 +4,15 @@
     )
 }}
 
-select productname,sum(profit) as total_profit
+select 
+    productid,
+    productname,
+    category,
+    subcategory,
+    sum(profit) as total_profit
 from {{ ref('staging_orders') }}
-group by productname
+group by 
+    productid,
+    productname,
+    category,
+    subcategory
